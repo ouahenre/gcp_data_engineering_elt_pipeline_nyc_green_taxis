@@ -1,4 +1,4 @@
-## **Pipeline ELT pour NYC Green Taxis (GCP): Pipeline ELT complet pour l'ingestion, transformation et analyse des données des taxis verts de NYC, avec modélisation ML dans BigQuery.**
+## **Pipeline ELT complet pour l'ingestion, transformation et analyse des données des taxis verts de NYC, avec modélisation ML dans BigQuery.**
 
 
 Ce projet s'est inspiré du cours de Mr Josué AFOUDA sur Udemy **Google Cloud Platform pour Data Engineers : Projet pratique**
@@ -50,7 +50,8 @@ gcp_data_engineering_elt_pipeline_nyc_green_taxis/
 
 Un aperçu du pipeline ELT: 
 
-![Animation](https://github.com/user-attachments/assets/afe2aeda-2241-47d3-8a37-5595e6c294f4)
+![Animation](https://github.com/user-attachments/assets/e5481b26-cc99-4526-b8fb-c5c238ab3936)
+
 
 
 ## 3. EXECUTION DES SCRIPTS
@@ -59,13 +60,15 @@ Un aperçu du pipeline ELT:
 ```bash
 python3 create_datasets.py
 ```
-![image](https://github.com/user-attachments/assets/1962e9d2-3bea-4099-a405-7c4e68e61c42)
 
-### 3.2 Télécharger les fichiers parquet
+
+### 3.2 Télécharger les fichiers parquet gans GCS
 ```bash
 python3 download_taxi_data.py
 ```
-![image](https://github.com/user-attachments/assets/0622079d-ce4d-410b-b62a-d7600c556ce2)
+
+![image](https://github.com/user-attachments/assets/84da8229-5614-49ce-8ecf-0edb3569a4fa)
+
 
 ### 3.3 Analyse exploratoire des fichiers
 ```bash
@@ -76,7 +79,9 @@ python3 exploratory_data_analysis.py
 ```bash
 python3 load_raw_trips_data.py
 ```
-![image](https://github.com/user-attachments/assets/63569a43-f4fa-4df9-8254-5ce488cd568d)
+![image](https://github.com/user-attachments/assets/5f0f8462-cacc-4295-93ef-824f0421aed9)
+
+
 
 ### 3.5 Vérifier si le nombre de lignes dans les fichiers parquet correspond au nombre de lignes chargé dans la table green-taxi-trips-analytics.raw_greentrips.trips
 ```bash
@@ -95,19 +100,26 @@ python3 elt_dag_pipeline.py
 ```
 3.7.1 Compte de service
 
-![image](https://github.com/user-attachments/assets/def17ff0-2c82-4d53-9b5c-dc93ac94fd5c)
+![image](https://github.com/user-attachments/assets/698d71c6-bee6-44db-9eea-fd73aa69f0ae)
+
 
 3.7.2 Apache Airflow
 
-![image](https://github.com/user-attachments/assets/a0d92ce8-3a8f-4ce6-b704-7a3bb7b4b7ca)
+![image](https://github.com/user-attachments/assets/278c207e-c887-4a00-9082-3fc7077bcf75)
 
-![image](https://github.com/user-attachments/assets/96d67b7d-410e-4871-ae5f-25ae9dc63528)
 
-### 3.8 Créer les datasets de machine learning
+![image](https://github.com/user-attachments/assets/de895ca2-b395-4d82-845d-78f39816a11a)
+
+![image](https://github.com/user-attachments/assets/5b232f7f-8322-4e25-89e3-c50539514941)
+
+
+
+### 3.8 Créer le dataset de machine learning
 ```bash
 python3 create_ml_dataset_table.py
 ```
-![image](https://github.com/user-attachments/assets/728f7a37-156b-439d-8d08-56f5fae788d1)
+
+![image](https://github.com/user-attachments/assets/1377b828-9f00-40b3-91a5-96a86ed0feb9)
 
 ### 3.9 Créer les vues nécessaires à travers les requêtes dans les fichiers SQL
 ```bash
@@ -120,9 +132,10 @@ CompetitiveInsights.sql
 
 ### 3.10 Créer les notebook nécessaires (voir fichier README.md)
 
-![image](https://github.com/user-attachments/assets/0d3366b6-7b86-4c77-8078-79f07d80fd14)
+![image](https://github.com/user-attachments/assets/31dc1346-d749-4348-ad77-3059a5acb337)
 
-Dans le Notebook Report, nous avons les éléments suivants:
+
+Dans le Notebook Report par exemple, nous avons les éléments suivants:
 
 
 **3.10.1 Setup**
@@ -179,7 +192,8 @@ fig_daily.show()
 ```
 
 **3.10.2 Le graphique de la demande journalière des taxis verts est le suivant** 
-![image](https://github.com/user-attachments/assets/2242961f-db77-4c93-8c3d-38fe96cce9ac)
+![image](https://github.com/user-attachments/assets/5da218b0-2f50-4c2a-a328-55231976855f)
+
 
 ### 3.11 Les prédictions du modèle boosted tree  parmi tant d'autres
 
@@ -218,7 +232,8 @@ ML.PREDICT (MODEL `green-taxi-trips-analytics.ml_dataset.boosted_tree_model`,
 ```
 
 Les caractéristiques les plus importantes qui influencent le modèle (prédiction du coût du trajet) sont les suivantes :
-![image](https://github.com/user-attachments/assets/68e4ef85-f6da-4559-b5ac-861fb8d315bb)
+![image](https://github.com/user-attachments/assets/34ffc8f0-b5e3-43e9-a9a5-a741e56a3a7d)
+
 
 Ainsi : 
 - trip_distance (7,277) - La distance du trajet est de loin le facteur le plus influent dans les prédictions du modèle boosted tree
@@ -233,9 +248,11 @@ Les autres caractéristiques (pickup_hour, PULocationID, etc.) ont une influence
 
 La prédiction est juste (moyenne d'erreur de **2,52**) pour certaines des observations comme l'indique le tableau ci-dessous : 
 
-![image](https://github.com/user-attachments/assets/76558527-4ce7-4282-9c51-ab9dd7d35479)
+![image](https://github.com/user-attachments/assets/1255d442-1a28-4037-8a25-7d0ab35a4e7a)
 
-![image](https://github.com/user-attachments/assets/c07e0f64-aea7-4dbf-a888-ba5904dec371)
 
+
+
+![image](https://github.com/user-attachments/assets/4ed8ca7b-79a4-43c0-bfd0-eb1529102c3c)
 
 
