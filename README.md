@@ -199,7 +199,7 @@ fig_daily.show()
 
 **4.11.1 Les requêtes qui ont permis de créer le modèle**
 
-(voir la requête modeling_queries.sql) 
+(voir le fichier modeling_queries.sql) 
 ```bash
 --- Pour rappel c'est la requête suivante qui a permis de créer la table sous-jacente pour le ML : green-taxi-trips-analytics.ml_dataset.trips_ml_data
 CREATE OR REPLACE TABLE `green-taxi-trips-analytics.ml_dataset.trips_ml_data` AS
