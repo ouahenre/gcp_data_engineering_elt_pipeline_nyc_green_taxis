@@ -1,4 +1,4 @@
-## **Pipeline ELT complet pour l'ingestion, transformation et analyse des données des taxis verts de NYC, avec modélisation ML dans BigQuery.**
+## **Pipeline ELT complet pour l'ingestion, la transformation et l'analyse des données des taxis verts de NYC, avec modélisation ML dans BigQuery.**
 
 
 Ce projet s'est inspiré du cours de Mr Josué AFOUDA sur Udemy **Google Cloud Platform pour Data Engineers : Projet pratique**
