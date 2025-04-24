@@ -48,21 +48,21 @@ gcp_data_engineering_elt_pipeline_nyc_green_taxis/
 
 
 
-Un aperçu du pipeline ELT: 
+## 3. APERCU DU PIPELINE ELT
 
 ![Animation](https://github.com/user-attachments/assets/e5481b26-cc99-4526-b8fb-c5c238ab3936)
 
 
 
-## 3. EXECUTION DES SCRIPTS
+## 4. EXECUTION DES SCRIPTS
 
-### 3.1 Créer les datasets
+### 4.1 Créer les datasets
 ```bash
 python3 create_datasets.py
 ```
 
 
-### 3.2 Télécharger les fichiers parquet gans GCS
+### 4.2 Télécharger les fichiers parquet gans GCS
 ```bash
 python3 download_taxi_data.py
 ```
@@ -70,12 +70,12 @@ python3 download_taxi_data.py
 ![image](https://github.com/user-attachments/assets/84da8229-5614-49ce-8ecf-0edb3569a4fa)
 
 
-### 3.3 Analyse exploratoire des fichiers
+### 4.3 Analyse exploratoire des fichiers
 ```bash
 python3 exploratory_data_analysis.py
 ```
 
-### 3.4 Charger les données brutes dans BigQuery
+### 4.4 Charger les données brutes dans BigQuery
 ```bash
 python3 load_raw_trips_data.py
 ```
@@ -83,18 +83,18 @@ python3 load_raw_trips_data.py
 
 
 
-### 3.5 Vérifier si le nombre de lignes dans les fichiers parquet correspond au nombre de lignes chargé dans la table green-taxi-trips-analytics.raw_greentrips.trips
+### 4.5 Vérifier si le nombre de lignes dans les fichiers parquet correspond au nombre de lignes chargé dans la table green-taxi-trips-analytics.raw_greentrips.trips
 ```bash
 python3 verification.py
 ```
-### 3.6 Transformer les données via une requête SQL 
+### 4.6 Transformer les données via une requête SQL 
 ```bash
 python3 load_raw_trips_data.py
 ```
 Les données sont chargées dans la table green-taxi-trips-analytics.transformed_data.cleaned_and_filtered
 
 
-### 3.7 Créer le DAG ELT après avoir créé un compte de service et configuré le DAG dans Apache Airflow
+### 4.7 Créer le DAG ELT après avoir créé un compte de service et configuré le DAG dans Apache Airflow
 ```bash
 python3 elt_dag_pipeline.py
 ```
@@ -103,7 +103,7 @@ python3 elt_dag_pipeline.py
 ![image](https://github.com/user-attachments/assets/698d71c6-bee6-44db-9eea-fd73aa69f0ae)
 
 
-3.7.2 Apache Airflow
+4.7.2 Apache Airflow
 
 ![image](https://github.com/user-attachments/assets/278c207e-c887-4a00-9082-3fc7077bcf75)
 
@@ -114,14 +114,14 @@ python3 elt_dag_pipeline.py
 
 
 
-### 3.8 Créer le dataset de machine learning
+### 4.8 Créer le dataset de machine learning
 ```bash
 python3 create_ml_dataset_table.py
 ```
 
 ![image](https://github.com/user-attachments/assets/1377b828-9f00-40b3-91a5-96a86ed0feb9)
 
-### 3.9 Créer les vues nécessaires à travers les requêtes dans les fichiers SQL
+### 4.9 Créer les vues nécessaires à travers les requêtes dans les fichiers SQL
 ```bash
 modeling_queries.sql
 MarketDemand_and_CustomerBehavior.sql
@@ -130,7 +130,7 @@ CompetitiveInsights.sql
 ```
 
 
-### 3.10 Créer les notebook nécessaires (voir fichier README.md)
+### 4.10 Créer les notebook nécessaires (voir fichier README.md)
 
 ![image](https://github.com/user-attachments/assets/31dc1346-d749-4348-ad77-3059a5acb337)
 
@@ -138,7 +138,7 @@ CompetitiveInsights.sql
 Dans le Notebook Report par exemple, nous avons les éléments suivants:
 
 
-**3.10.1 Setup**
+**4.10.1 Setup**
 
 
 ```bash
@@ -191,13 +191,13 @@ fig_daily.show()
 
 ```
 
-**3.10.2 Le graphique de la demande journalière des taxis verts est le suivant** 
+**4.10.2 Le graphique de la demande journalière des taxis verts est le suivant** 
 ![image](https://github.com/user-attachments/assets/5da218b0-2f50-4c2a-a328-55231976855f)
 
 
-### 3.11 Les prédictions du modèle boosted tree  parmi tant d'autres
+### 4.11 Les prédictions du modèle boosted tree  parmi tant d'autres
 
-**3.11.1 Les requêtes qui ont permis de créer le modèle**
+**4.11.1 Les requêtes qui ont permis de créer le modèle**
 
 (voir la requête modeling_queries.sql) 
 ```bash
@@ -244,7 +244,7 @@ Ainsi :
 
 Les autres caractéristiques (pickup_hour, PULocationID, etc.) ont une influence très faible sur les prédictions du modèle.
 
-**3.11.2. La prédiction du prix du voyage total_amount.**
+**4.11.2. La prédiction du prix du voyage total_amount.**
 
 La prédiction est juste (moyenne d'erreur de **2,52**) pour certaines des observations comme l'indique le tableau ci-dessous : 
 
