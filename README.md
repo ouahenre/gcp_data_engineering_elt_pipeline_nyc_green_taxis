@@ -98,7 +98,7 @@ Les données sont chargées dans la table green-taxi-trips-analytics.transformed
 ```bash
 python3 elt_dag_pipeline.py
 ```
-3.7.1 Compte de service
+4.7.1 Compte de service
 
 ![image](https://github.com/user-attachments/assets/698d71c6-bee6-44db-9eea-fd73aa69f0ae)
 
