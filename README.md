@@ -62,7 +62,7 @@ python3 create_datasets.py
 ```
 
 
-### 4.2 Télécharger les fichiers parquet gans GCS
+### 4.2 Télécharger les fichiers parquet dans GCS
 ```bash
 python3 download_taxi_data.py
 ```
