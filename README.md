@@ -89,7 +89,7 @@ python3 verification.py
 ```
 ### 4.6 Transformer les données via une requête SQL 
 ```bash
-python3 load_raw_trips_data.py
+python3 transform_trips_data.py
 ```
 Les données sont chargées dans la table green-taxi-trips-analytics.transformed_data.cleaned_and_filtered
 
